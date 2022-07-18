@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "80ad5a8c-9480-4ef2-abea-b6c1551d4f1f",
+		"name": "imperial-task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add-product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJmaXJzdF9uYW1lIjoiYWRtaW4iLCJsYXN0X25hbWUiOiJ1c2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ.WdpS2A7F3CxCWR5L6gPrHyPuXNxvDE5WUz36Nq8_gso",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"p_name\": \"soap\",\r\n    \"p_type\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/v1/add-product"
+			},
+			"response": []
+		},
+		{
+			"name": "get-product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJmaXJzdF9uYW1lIjoiYWRtaW4iLCJsYXN0X25hbWUiOiJ1c2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ.WdpS2A7F3CxCWR5L6gPrHyPuXNxvDE5WUz36Nq8_gso",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"p_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/v1/get-product"
+			},
+			"response": []
+		},
+		{
+			"name": "update-product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "localhost:3000/v1/update-product"
+			},
+			"response": []
+		},
+		{
+			"name": "delete-product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJmaXJzdF9uYW1lIjoiYWRtaW4iLCJsYXN0X25hbWUiOiJ1c2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ.WdpS2A7F3CxCWR5L6gPrHyPuXNxvDE5WUz36Nq8_gso",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"p_id\":1    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:3000/v1/delete-product"
+			},
+			"response": []
+		}
+	]
+}
