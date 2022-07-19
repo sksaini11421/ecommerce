@@ -31,6 +31,21 @@ exports.getProducts = async (p_id) => {
   });
 };
 
+exports.getAllProducts = async () => {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT * FROM products `;
+    db.query(query, (error, result, fields) => {
+      if (error) {
+        dbFUnc.connectionRelease;
+        reject(error);
+      } else {
+        // dbFUnc.checkConnection();
+        resolve(result);
+      }
+    });
+  });
+};
+
 exports.updateProducts = async (p_name, p_type, updated_at, p_id) => {
   return new Promise((resolve, reject) => {
     const query = `UPDATE products set product_name=?,product_type=?,updated_at=? where product_id=?`;

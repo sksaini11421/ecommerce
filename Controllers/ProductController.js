@@ -19,10 +19,36 @@ exports.getProducts = async (req, res, next) => {
     const data = req.body;
     const p_id = data.p_id;
     const pData = await productModel.getProducts(p_id);
-    res.send({
-      message: "product Details fetched Successfully!.",
-      data: pData[0],
-    });
+    if (pData != "") {
+      res.send({
+        message: "product Details fetched Successfully!.",
+        data: pData[0],
+      });
+    } else {
+      res.send({
+        message: "product Not exists!.",
+        data: pData[0],
+      });
+    }
+  } catch (error) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+};
+
+exports.getAllProducts = async (req, res, next) => {
+  try {
+    const data = req.body;
+    const pData = await productModel.getAllProducts();
+    if (pData != "") {
+      res.send({
+        message: "Product Details fetched Successfully!.",
+        data: pData,
+      });
+    } else {
+      res.send({
+        message: "No Products Found!.",
+      });
+    }
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }
@@ -35,8 +61,17 @@ exports.updateProducts = async (req, res, next) => {
     const p_name = data.p_name;
     const p_type = data.p_type;
     const updated_at = moment().format();
-    await productModel.updateProducts(p_name, p_type, updated_at, p_id);
-    res.send({ message: "product Details Updated Successfully!." });
+    if (p_id && p_name && p_type != "") {
+      const pData = await productModel.getProducts(p_id);
+      if (pData != "") {
+        await productModel.updateProducts(p_name, p_type, updated_at, p_id);
+        res.send({ message: "product Details Updated Successfully!." });
+      } else {
+        res.send({ message: "product not exits" });
+      }
+    } else {
+      res.status(200).send({ message: "product det are required!." });
+    }
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }

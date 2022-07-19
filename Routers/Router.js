@@ -14,9 +14,26 @@ routes.post(
   AuthenticteUser.authenticateUser,
   productController.addProducts
 );
-routes.post("/update-product", productController.updateProducts);
-routes.post("/delete-product", productController.deleteProduct);
+routes.post(
+  "/update-product",
+  AuthenticteUser.authenticateUser,
+  productController.updateProducts
+);
+routes.post(
+  "/delete-product",
+  AuthenticteUser.authenticateUser,
+  productController.deleteProduct
+);
 
-routes.get("/get-product", productController.getProducts);
+routes.get(
+  "/get-product",
+  AuthenticteUser.authenticateUser,
+  productController.getProducts
+);
 
+routes.get(
+  "/get-all-product",
+  AuthenticteUser.authenticateUser,
+  productController.getAllProducts
+);
 module.exports = routes;
